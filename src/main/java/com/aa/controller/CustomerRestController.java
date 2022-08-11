@@ -11,7 +11,7 @@ import com.aa.entity.Customer;
 import com.aa.service.CustomerService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class CustomerRestController {
 	
 	@Autowired

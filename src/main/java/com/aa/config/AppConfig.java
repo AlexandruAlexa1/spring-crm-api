@@ -23,8 +23,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.aa")
-@PropertySource("classpath:persistence-mysql.properties")
+@ComponentScan("com.aa")
+@PropertySource({"classpath:persistence-mysql.properties"})
 public class AppConfig {
 	
 	@Autowired
