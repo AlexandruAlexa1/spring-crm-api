@@ -14,6 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerDAO customerDAO;
 	
+	@Override
 	public List<Customer> listAll() {
 		List<Customer> listCustomers = customerDAO.findAll();
 		
