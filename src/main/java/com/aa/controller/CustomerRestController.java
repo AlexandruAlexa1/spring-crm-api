@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aa.entity.Customer;
+import com.aa.exception.NotFoundException;
 import com.aa.service.CustomerService;
 
 @RestController
@@ -35,8 +36,12 @@ public class CustomerRestController {
 	}
 	
 	@GetMapping("/customers/{id}")
-	public Customer getCustomer(@PathVariable(name = "id") Integer id) {
+	public Customer getCustomer(@PathVariable(name = "id") Integer id) throws NotFoundException {
 		Customer customer = service.get(id);
+		
+		if (customer == null) {
+			throw new NotFoundException("Could not find Customer with ID: " + id);
+		}
 		
 		return customer;
 	}
