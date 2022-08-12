@@ -23,6 +23,8 @@ public class Customer {
 	
 	private String email;
 	
+	private String password;
+	
 	@Column(name = "address_line_1")
 	private String addressLine1;
 	
@@ -73,6 +75,14 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getAddressLine1() {
