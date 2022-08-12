@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +13,7 @@ import com.aa.entity.Customer;
 import com.aa.service.CustomerService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class CustomerRestController {
 	
 	@Autowired
@@ -22,5 +24,12 @@ public class CustomerRestController {
 		List<Customer> listCustomers = service.listAll();
 		
 		return listCustomers;
+	}
+	
+	@PostMapping("/customers")
+	public Customer addCustomer(@RequestBody Customer customer) {
+		service.save(customer);
+		
+		return customer;
 	}
 }
