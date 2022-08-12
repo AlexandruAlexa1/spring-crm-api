@@ -29,6 +29,8 @@ public class Customer {
 	@Column(name = "address_line_2")
 	private String addressLine2;
 	
+	private String city;
+	
 	private String state;
 	
 	@Column(name = "postal_code")
@@ -87,6 +89,14 @@ public class Customer {
 
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getState() {
