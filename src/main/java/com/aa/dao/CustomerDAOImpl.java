@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +20,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> findAll() {
 		Session session = sessionFactory.getCurrentSession();
 		
-		List<Customer> listCustomers = session.createQuery("from Customer", Customer.class).getResultList();
+		List<Customer> listCustomers = session.createQuery("FROM Customer", Customer.class).getResultList();
 		
 		return listCustomers;
 	}
@@ -32,12 +33,22 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Customer get(Integer id) {
+	public Customer findById(Integer id) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		Customer customer = session.get(Customer.class, id);
 		
 		return customer;
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<?> query = session.createQuery("DELETE FROM Customer WHERE id = :id");
+		query.setParameter("id", id);
+		
+		query.executeUpdate();
 	}
 
 }

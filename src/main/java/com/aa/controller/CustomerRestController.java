@@ -3,6 +3,7 @@ package com.aa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,7 +42,7 @@ public class CustomerRestController {
 		Customer customer = service.get(id);
 		
 		if (customer == null) {
-			throw new NotFoundException("Could not find Customer with ID: " + id);
+			throw new NotFoundException("Could not find any customer with ID: " + id);
 		}
 		
 		return customer;
@@ -52,5 +53,18 @@ public class CustomerRestController {
 		service.save(customer);
 		
 		return customer;
+	}
+	
+	@DeleteMapping("/customers/{id}")
+	public String deleteCustomer(@PathVariable(name = "id") Integer id) throws NotFoundException {
+		Customer customer = service.get(id);
+		
+		if (customer == null) {
+			throw new NotFoundException("Could not find any customer with ID: " + id);
+		}
+		
+		service.delete(id);
+		
+		return "The customer with ID: " + id + " has been deleted successfully!";
 	}
 }
