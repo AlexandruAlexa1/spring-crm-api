@@ -15,30 +15,34 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "first_name")
+	@Column(name = "first_name", nullable = false, length = 45)
 	private String firstName;
 	
-	@Column(name = "last_name")
+	@Column(name = "last_name", nullable = false, length = 45)
 	private String lastName;
 	
+	@Column(length = 45, nullable = false, unique = true)
 	private String email;
 	
+	@Column(length = 65, nullable = false)
 	private String password;
 	
-	@Column(name = "address_line_1")
+	@Column(name = "address_line_1", nullable = false, length = 64)
 	private String addressLine1;
 	
-	@Column(name = "address_line_2")
+	@Column(name = "address_line_1", length = 64)
 	private String addressLine2;
 	
+	@Column(nullable = false, length = 45)
 	private String city;
 	
+	@Column(nullable = false, length = 45)
 	private String state;
 	
 	@Column(name = "postal_code")
 	private String postalCode;
 	
-	@Column(name = "phone_number")
+	@Column(name = "phone_number", nullable = false, length = 15)
 	private String phoneNumber;
 	
 	public Customer() {
