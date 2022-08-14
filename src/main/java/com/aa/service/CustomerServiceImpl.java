@@ -19,9 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	@Transactional
 	public List<Customer> listAll() {
-		List<Customer> listCustomers = customerDAO.findAll();
-		
-		return listCustomers;
+		return customerDAO.findAll();
 	}
 
 	@Override

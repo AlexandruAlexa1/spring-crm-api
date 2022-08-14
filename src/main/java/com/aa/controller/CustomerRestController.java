@@ -17,28 +17,26 @@ import com.aa.exception.NotFoundException;
 import com.aa.service.CustomerService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/customers")
 public class CustomerRestController {
 	
 	@Autowired
 	private CustomerService service;
 
-	@GetMapping("/customers")
+	@GetMapping
 	public List<Customer> listAll() {
-		List<Customer> listCustomers = service.listAll();
-		
-		return listCustomers;
+		return service.listAll();
 	}
 	
-	@PostMapping("/customers")
+	@PostMapping
 	public Customer addCustomer(@RequestBody Customer customer) {
 		service.save(customer);
 		
 		return customer;
 	}
 	
-	@GetMapping("/customers/{id}")
-	public Customer getCustomer(@PathVariable(name = "id") Integer id) throws NotFoundException {
+	@GetMapping("/{id}")
+	public Customer getCustomer(@PathVariable("id") Integer id) throws NotFoundException {
 		Customer customer = service.get(id);
 		
 		if (customer == null) {
@@ -48,15 +46,15 @@ public class CustomerRestController {
 		return customer;
 	}
 	
-	@PutMapping("/customers")
+	@PutMapping
 	public Customer updateCustomer(@RequestBody Customer customer) {
 		service.save(customer);
 		
 		return customer;
 	}
 	
-	@DeleteMapping("/customers/{id}")
-	public String deleteCustomer(@PathVariable(name = "id") Integer id) throws NotFoundException {
+	@DeleteMapping("/{id}")
+	public String deleteCustomer(@PathVariable("id") Integer id) throws NotFoundException {
 		Customer customer = service.get(id);
 		
 		if (customer == null) {

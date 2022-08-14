@@ -42,8 +42,8 @@ public class AppConfig {
 			e.printStackTrace();
 		}
 		
-		logger.info("AA JDBC URL" + env.getProperty("jdbc.url"));
-		logger.info("AA JDBC USER" + env.getProperty("jdbc.user"));
+		logger.info(">>>>> JDBC URL: " + env.getProperty("jdbc.url"));
+		logger.info(">>>>> JDBC USER: " + env.getProperty("jdbc.user"));
 		
 		dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
 		dataSource.setUser(env.getProperty("jdbc.user"));
